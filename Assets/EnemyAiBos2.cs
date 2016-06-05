@@ -22,7 +22,7 @@ public class EnemyAiBos2 : MonoBehaviour {
 		active = false;
 		damaged = false;
 		countedDamaged = 0;
-		timeDamaged = 0.5f;
+		timeDamaged = 1f;
 	
 	}
 	void Update(){

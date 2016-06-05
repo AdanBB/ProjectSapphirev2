@@ -41,6 +41,18 @@ public class PauseMenuManager : MonoBehaviour {
 					SetPause ();
 				}
 			}
+			if (Input.GetKeyDown (KeyCode.O)) {
+				Application.LoadLevel (6);
+			}
+			if (Input.GetKeyDown (KeyCode.I)) {
+				Application.LoadLevel (3);
+			}
+			if (Input.GetKeyDown (KeyCode.K)) {
+				Application.LoadLevel (4);
+			}
+			if (Input.GetKeyDown (KeyCode.L)) {
+				Application.LoadLevel (5);
+			}
 		}
         if (Input.GetKeyDown(KeyCode.N))
         {

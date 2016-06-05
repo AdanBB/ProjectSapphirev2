@@ -23,7 +23,7 @@ public class EnemyAiBoos : MonoBehaviour {
 	void Start () {
 		damaged = false;
 		countedDamaged = 0;
-		timeDamaged = 2f;
+		timeDamaged = 0.25f;
 
 	}
 	void Update(){
