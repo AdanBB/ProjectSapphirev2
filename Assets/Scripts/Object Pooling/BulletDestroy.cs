@@ -44,6 +44,10 @@ public class BulletDestroy : MonoBehaviour {
     {
 		if ((other.tag != "Detection") || (other.gameObject.tag != "Info") || (other.gameObject.tag == "Platform")) 
 		{
+			if (other.tag == "Boss2") {
+				other.GetComponent<EnemyAiBos2> ().AdDamage (damage);
+				Invoke ("Destroy", 0.05f);
+			}
 			if (other.tag == "Boss") {
 				other.GetComponent<EnemyAiBoos> ().AdDamage (damage);
 				Invoke ("Destroy", 0.05f);

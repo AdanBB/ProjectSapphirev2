@@ -30,13 +30,13 @@ public class EnemyAiBos2 : MonoBehaviour {
 		if (damaged) {
 		
 			countedDamaged += Time.deltaTime;
-			Debug.Log ("dsa");
+
 		
 		}
 		if(countedDamaged >= timeDamaged){
 
 			rend.material.color = NornalTexture;
-			Debug.Log("lel");
+			countedDamaged = 0;
 			damaged = false;
 		}
 	
@@ -46,8 +46,8 @@ public class EnemyAiBos2 : MonoBehaviour {
 	public void AdDamage(int Damage){
 		if (active) {
 			health -= Damage;
-			countedDamaged = timeDamaged;
-			rend.material.color = damagedTexture;
+	
+			rend.material.SetColor("_Color", Color.red);
 				
 			damaged = true;
 
@@ -56,7 +56,7 @@ public class EnemyAiBos2 : MonoBehaviour {
 			particles.SetActive (true);
 
 			hoguera.SetActive (true);
-
+			Debug.Log ("adeee");
 			Destroy (this.gameObject);
 
 		}
