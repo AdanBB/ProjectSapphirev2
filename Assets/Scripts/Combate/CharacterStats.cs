@@ -31,7 +31,7 @@ public class CharacterStats : MonoBehaviour
         }
         if (currentHealth <= 0)
         {
-			GetComponent<Collider> ().enabled = false;
+            Cursor.visible = true;
 			gameOverUI.SetActive (true);
 			uiObject.SetActive (false);
         }

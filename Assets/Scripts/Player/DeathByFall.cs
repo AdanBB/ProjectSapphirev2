@@ -34,7 +34,8 @@ public class DeathByFall : MonoBehaviour {
 			enterPosition = other.gameObject.transform.position;
 			other.gameObject.SetActive (false);
 
-			dead = true;
+            Cursor.visible = true;
+            dead = true;
 
 			gameOverUI.SetActive (true);
 			uiObject.SetActive (false);
