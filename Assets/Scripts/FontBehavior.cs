@@ -48,21 +48,13 @@ public class FontBehavior : MonoBehaviour {
 			_uiColor.ChangeColor (_fontColor);
 			_uiColor2.ChangeColor (_fontColor);
 
-			if (!_player.playerColors.Contains (_fontColor)) {
-
-				_player.paintCharges = chargesToAdd;
-				_player.playerColors.Add (_fontColor);
-				_player.selectedColor = _fontColor;
-				_splash.enabled = true;
-				gameObject.GetComponent<AudioSource> ().PlayOneShot (getColor);
-			}
-
-			if (_player.paintCharges <= 20) {
+			if (!_player.playerColors.Contains(_fontColor) || _player.selectedColor != _fontColor) {
 
 				_player.paintCharges = 20f;
 				_player.playerColors.Add (_fontColor);
 				_player.selectedColor = _fontColor;
-				gameObject.GetComponent<AudioSource> ().PlayOneShot (getColor);
+                _splash.enabled = true;
+                gameObject.GetComponent<AudioSource> ().PlayOneShot (getColor);
 			}
 
 			if (_player.paintCharges <= 20) {
