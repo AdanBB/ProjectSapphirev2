@@ -7,7 +7,7 @@ public class BulletScript : MonoBehaviour {
 
 	private PlayerAI _player;
 	private GameObject _colorManager;
-	private Color _bulletColor;
+	internal Color _bulletColor;
 
 	void Awake(){
 	

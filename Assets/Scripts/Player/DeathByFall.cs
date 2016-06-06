@@ -14,7 +14,8 @@ public class DeathByFall : MonoBehaviour {
 
 	void Start()
 	{
-		dead = false;
+        Cursor.visible = false;
+        dead = false;
 	}
 
 	void FixedUpdate()

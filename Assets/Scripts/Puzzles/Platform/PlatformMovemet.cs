@@ -76,7 +76,6 @@ public class PlatformMovemet : MonoBehaviour
     {
         if (myRenderer.material.color == Color.blue)
         {
-			
             VMovement();
         }
         if (myRenderer.material.color == Color.green)
