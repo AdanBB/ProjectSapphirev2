@@ -173,7 +173,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 0
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -550,7 +550,7 @@ ModelImporter:
       name: JUMP
       takeName: Take 001
       firstFrame: 120
-      lastFrame: 159
+      lastFrame: 160
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -723,6 +723,8 @@ ModelImporter:
       - path: Character1_Ctrl_Reference/Character1_Ctrl_RightShoulderEffector
         weight: 1
       - path: Character1_Ctrl_Reference/Character1_Ctrl_RightWristEffector
+        weight: 1
+      - path: nurbsCube1
         weight: 1
       - path: Object001
         weight: 1
