@@ -17,7 +17,7 @@ public class ParticleSystemRay : MonoBehaviour {
 
 		if (active) {
 		
-			Instantiate (particleSystemCollision, new Vector3 (transform.position.x, -0.59f, transform.position.z),transform.rotation );
+			Instantiate (particleSystemCollision, new Vector3 (transform.position.x, -0.59f, transform.position.z), Quaternion.Euler (new Vector3 (-90, 0, 0)));
 		
 		}else if (!active) {
 

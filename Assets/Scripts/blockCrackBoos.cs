@@ -16,12 +16,12 @@ public class blockCrackBoos : MonoBehaviour {
 
 	public Transform A;
 
-	public Renderer[] childs;
+
 
 	void Awake(){
 
 
-		childs = GetComponentsInChildren<Renderer>();
+
 
 	}
 
