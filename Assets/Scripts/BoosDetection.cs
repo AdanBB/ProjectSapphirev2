@@ -4,7 +4,7 @@ using System.Collections;
 public class BoosDetection : MonoBehaviour {
 
 	private Animator boosAnimator;
-	public AudioClip epicMusic;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -25,7 +25,7 @@ public class BoosDetection : MonoBehaviour {
 		
 			boosAnimator.SetBool ("isBuilding", true);
 
-			GetComponent<AudioSource> ().PlayOneShot (epicMusic);
+
 		
 		}
 			
