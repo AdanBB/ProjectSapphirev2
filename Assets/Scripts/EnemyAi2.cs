@@ -50,6 +50,13 @@ public class EnemyAi2 : MonoBehaviour {
 	private bool hit;
 	private float hitcounter;
 
+	private bool damaged;
+	private float countedDamaged;
+	private float timeDamaged;
+
+	public Color damagedTexture;
+	public Color NornalTexture;
+	public Renderer rend;
 
 	// Use this for initialization
     void Awake () {
@@ -77,10 +84,30 @@ public class EnemyAi2 : MonoBehaviour {
 		isAttacking = false;
 		agent.SetDestination (pointA.position);
 		anim.SetBool ("IsMoving", true );
+
+		damaged = false;
+		countedDamaged = 0;
+		timeDamaged = 0.25f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (damaged) {
+
+			countedDamaged += Time.deltaTime;
+
+			Debug.Log ("dsa");
+
+		}
+		if(countedDamaged >= timeDamaged){
+
+			rend.materials[1].color = NornalTexture;
+			Debug.Log("lel");
+			countedDamaged = 0;
+			damaged = false;
+		}
+
 
 		if (hit) 
 		{
@@ -155,7 +182,7 @@ public class EnemyAi2 : MonoBehaviour {
 			//transform.LookAt (new Vector3 (player.transform.position.x, transform.position.y, player.transform.position.z));
 			agent.SetDestination (player.transform.position);
 			anim.SetBool ("IsMoving", true);
-		} else {
+		} else if(lastHit) {
 		
 			agent.Stop ();
 		
@@ -185,10 +212,15 @@ public class EnemyAi2 : MonoBehaviour {
 		if ((health >= 0)) {
 
 			health = health - Damage;
+			rend.materials[1].SetColor("_Color", Color.red);
+
+			damaged = true;
 		}
 
 		if ((health <= 10) && (!lastHit)) {
+			rend.materials[1].SetColor("_Color", Color.red);
 
+			damaged = true;
 			lastHit = !lastHit;
 		}
 
