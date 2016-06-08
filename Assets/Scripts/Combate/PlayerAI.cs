@@ -109,36 +109,24 @@ public class PlayerAI : MonoBehaviour
         {
 			if(currentFrame <= framesDuration)
 			{
-				if(SceneManager.GetActiveScene().buildIndex == 6){
-					Pivot.transform.localPosition = new Vector3(Easing.QuintEaseOut(currentFrame, pivotTransform.x, (_pivotTransformBoos.x - pivotTransform.x), framesDuration),
-						Easing.QuintEaseOut(currentFrame, pivotTransform.y, (_pivotTransformBoos.y - pivotTransform.y), framesDuration),
-						Easing.QuintEaseOut(currentFrame, pivotTransform.z, (_pivotTransformBoos.z - pivotTransform.z), framesDuration));        
-					currentFrame ++;
-
-				}else{
+				
 				Pivot.transform.localPosition = new Vector3(Easing.QuartEaseIn(currentFrame, pivotTransform.x, (_pivotTransform.x - pivotTransform.x), framesDuration),
 					Easing.QuartEaseIn(currentFrame, pivotTransform.y, (_pivotTransform.y - pivotTransform.y), framesDuration),
 					Easing.QuartEaseIn(currentFrame, pivotTransform.z, (_pivotTransform.z - pivotTransform.z), framesDuration));        
 				currentFrame++;
-				}
+
 			}
 		}
 		else if  (!isAiming)
         {
 			if(_currentFrame <= framesDuration)
 			{
-				if(SceneManager.GetActiveScene().buildIndex == 6){
-					Pivot.transform.localPosition = new Vector3(Easing.QuintEaseOut(_currentFrame, _pivotTransformBoos.x, (pivotTransform.x - _pivotTransformBoos.x), framesDuration),
-						Easing.QuintEaseOut(_currentFrame, _pivotTransformBoos.y, (pivotTransform.y - _pivotTransformBoos.y), framesDuration),
-						Easing.QuintEaseOut(_currentFrame, _pivotTransformBoos.z, (pivotTransform.z - _pivotTransformBoos.z), framesDuration));        
-					_currentFrame++;
-
-				}else {
+				
 				Pivot.transform.localPosition = new Vector3(Easing.QuartEaseOut(_currentFrame, _pivotTransform.x, (pivotTransform.x - _pivotTransform.x), framesDuration),
 					Easing.QuartEaseOut(_currentFrame, _pivotTransform.y, (pivotTransform.y - _pivotTransform.y), framesDuration),
 					Easing.QuartEaseOut(_currentFrame, _pivotTransform.z, (pivotTransform.z - _pivotTransform.z), framesDuration));        
 				_currentFrame++;
-				}
+
 			}
 		}
 

@@ -114,18 +114,20 @@ public class EnemyAi2 : MonoBehaviour {
 			anim.SetBool ("IsLastHit", true);
 			lastHitCounter += Time.deltaTime;
 
-			if (lastHitCounter >= 3)
-            {
-				treeBody.GetComponent<Renderer> ().materials[1].color = normal;
+			if (lastHitCounter >= 3) {
+				treeBody.GetComponent<Renderer> ().materials [1].color = normal;
 				health = _health;
 				lastHitCounter = 0;
 				lastHit = !lastHit;
 			}
 
+		} else {
+			anim.SetBool ("IsLastHit", false);
+			anim.speed = 1;
+			agent.speed = 1;
 		}
-        else anim.SetBool ("IsLastHit", false);
-
 		velocity = agent.velocity.magnitude;
+
 
 		if (Vector3.Distance (agent.destination, this.transform.position) <= 1.40f) 
 		{
@@ -148,9 +150,15 @@ public class EnemyAi2 : MonoBehaviour {
     {
 		if (!lastHit) {
 	
-			transform.LookAt(new Vector3 (player.transform.position.x, transform.position.y , player.transform.position.z));
+			anim.speed = 2;
+			agent.speed = 2.5f;
+			//transform.LookAt (new Vector3 (player.transform.position.x, transform.position.y, player.transform.position.z));
 			agent.SetDestination (player.transform.position);
 			anim.SetBool ("IsMoving", true);
+		} else {
+		
+			agent.Stop ();
+		
 		}
 
 
@@ -197,7 +205,7 @@ public class EnemyAi2 : MonoBehaviour {
 
 	public void Attack(){
 
-		Invoke ("DamagePlayer", 0.5f);
+		Invoke ("DamagePlayer", 0.8f);
 
 		attack = true;
 		AttackNum = Random.Range (1, 4);
