@@ -34,12 +34,16 @@ public class PlayerAI : MonoBehaviour
 	public AudioSource playerAudio;
 	public AudioClip shootSound;
 
-	public float paintCharges;
+    internal Quaternion lookDirection;
+    internal Vector3 instantiatePosition;
+
+    public float paintCharges;
 
 	public playerController PlayerController;
 
+    public GameObject crossAim;
 
-	void Awake(){
+    void Awake(){
 	
 		Pivot = GameObject.FindGameObjectWithTag ("Camera").transform.GetChild (0).gameObject;
 
@@ -69,7 +73,9 @@ public class PlayerAI : MonoBehaviour
 
     public void RangeWeapon()
     {
-		#region Shoot Bullet
+        CrossHair();
+
+        #region Shoot Bullet
 
         if (paintCharges > 0)
         {
@@ -131,6 +137,30 @@ public class PlayerAI : MonoBehaviour
 		}
 
         #endregion
+    }
+
+    void CrossHair()
+    {
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        Ray ray = new Ray(transform.position, fwd);
+        RaycastHit hitInfo = new RaycastHit();
+
+        if (isAiming && Physics.Raycast(ray, out hitInfo, Mathf.Infinity))
+        {
+            crossAim.SetActive(true);
+
+            if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity))
+            {
+                lookDirection = Quaternion.LookRotation(hitInfo.normal * -1);
+                instantiatePosition = hitInfo.point + (hitInfo.normal * 0.01f);
+                crossAim.transform.position = instantiatePosition;
+                crossAim.transform.localRotation = lookDirection;
+            }
+        }
+        else if (!Physics.Raycast(ray, out hitInfo, Mathf.Infinity) || !isAiming)
+        {
+            crossAim.SetActive(false);
+        }
     }
 
     void Fire()

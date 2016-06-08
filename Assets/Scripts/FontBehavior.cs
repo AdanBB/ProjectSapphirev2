@@ -50,8 +50,8 @@ public class FontBehavior : MonoBehaviour {
 
 			if (!_player.playerColors.Contains(_fontColor) || _player.selectedColor != _fontColor) {
 
-				_player.paintCharges = 20f;
-				_player.playerColors.Add (_fontColor);
+                _player.paintCharges += (Time.deltaTime * 4);
+                _player.playerColors.Add (_fontColor);
 				_player.selectedColor = _fontColor;
                 _splash.enabled = true;
                 gameObject.GetComponent<AudioSource> ().PlayOneShot (getColor);

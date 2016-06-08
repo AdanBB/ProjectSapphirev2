@@ -21,7 +21,10 @@ public class BulletDestroy : MonoBehaviour {
 
 	private int privateColor;
 
-	void Awake()
+    internal Vector3 positioninsta;
+    internal Quaternion rotateinsta;
+
+    void Awake()
 	{
 		colorController = GameObject.Find ("ColorManager").GetComponent<ColorController> ();
 		_thisColor = GetComponent<Renderer> ().material.color;
@@ -31,6 +34,9 @@ public class BulletDestroy : MonoBehaviour {
 	// Use this for initialization
     private void OnEnable()
     {
+        rotateinsta = _player.lookDirection;
+        positioninsta = _player.instantiatePosition;
+
         Invoke("Destroy", 3f);
 		_thisColor = _player.selectedColor;
     }
@@ -63,25 +69,15 @@ public class BulletDestroy : MonoBehaviour {
 				{
 					if (_thisColor == colorController.colorList [i].color) {
 
-						if (colorController.colorList [i].colorName == "Green") {
-						
-							RaycastHit hit;
-
-							if (Physics.Raycast (transform.position, other.transform.position, out hit)) {
-								//Instantiate (GameObject.Find("paintSplash_Green"), new Vector3(transform.position.x, hit.point.y + 0.01f, transform.position.z), Quaternion.Euler (90, Random.Range (0, 360), 0));
-								Instantiate (GameObject.Find("paintSplash_Green"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler (90, Random.Range (0, 360), 0));
-							}
-						}
-						else if (colorController.colorList [i].colorName == "Blue") {
-
-							RaycastHit hit;
-
-							if (Physics.Raycast (transform.position, other.transform.position, out hit)) {
-								//Instantiate (GameObject.Find("paintSplash_Blue"), new Vector3(transform.position.x, hit.point.y + 0.01f, transform.position.z), Quaternion.Euler (90, Random.Range (0, 360), 0));
-								Instantiate (GameObject.Find("paintSplash_Blue"), new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler (90, Random.Range (0, 360), 0));
-							}
-						}
-					}
+                        if (colorController.colorList[i].colorName == "Green")
+                        {
+                            Instantiate(GameObject.Find("paintSplash_Green"), positioninsta, rotateinsta);
+                        }
+                        else if (colorController.colorList[i].colorName == "Blue")
+                        {
+                            Instantiate(GameObject.Find("paintSplash_Blue"), positioninsta, rotateinsta);
+                        }
+                    }
 				}
 
 				Invoke ("Destroy", 0.05f);
@@ -91,7 +87,7 @@ public class BulletDestroy : MonoBehaviour {
 
 	void Destroy ()
     {
-		Instantiate (bulletExplosion, transform.position, transform.rotation);
+		//Instantiate (bulletExplosion, transform.position, transform.rotation);
         gameObject.SetActive(false);
 	}
 }
