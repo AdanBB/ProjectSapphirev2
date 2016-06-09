@@ -16,6 +16,7 @@ public class FontBehavior : MonoBehaviour {
 	internal bool isInside;
 	internal CopsuleTint _uiColor;
 	internal CopsuleTint _uiColor2;
+	internal ParticleSystem dropletPS;
 
 	internal Image _splash;
 
@@ -25,6 +26,7 @@ public class FontBehavior : MonoBehaviour {
 		_colorManager = GameObject.Find("ColorManager").GetComponent<ColorController>();
 		_uiColor = GameObject.Find ("Splash").GetComponent<CopsuleTint> ();
 		_uiColor2 = GameObject.Find ("Fill").GetComponent<CopsuleTint> ();
+		dropletPS = transform.GetChild (6).GetComponent<ParticleSystem> ();
 
 		_splash = GameObject.Find ("Splash").GetComponent<Image> ();
 
@@ -45,22 +47,32 @@ public class FontBehavior : MonoBehaviour {
 	void Update(){
 
 		if (isInside && Input.GetKey (KeyCode.E)) {
+
+			dropletPS.startColor = _fontColor;
+			dropletPS.Play ();
+
 			_uiColor.ChangeColor (_fontColor);
 			_uiColor2.ChangeColor (_fontColor);
 
-			if (!_player.playerColors.Contains(_fontColor) || _player.selectedColor != _fontColor) {
+			if (!_player.playerColors.Contains (_fontColor) || _player.selectedColor != _fontColor) {
 
-                _player.paintCharges += (Time.deltaTime * 4);
-                _player.playerColors.Add (_fontColor);
+				_player.paintCharges += (Time.deltaTime * 4);
+				_player.playerColors.Add (_fontColor);
 				_player.selectedColor = _fontColor;
-                _splash.enabled = true;
-                gameObject.GetComponent<AudioSource> ().PlayOneShot (getColor);
+				_splash.enabled = true;
+				gameObject.GetComponent<AudioSource> ().PlayOneShot (getColor);
 			}
 
 			if (_player.paintCharges <= 20) {
 
 				_player.paintCharges += (Time.deltaTime * 4);
+			} else if (_player.paintCharges >= 20) {
+
+				dropletPS.Stop ();
 			}
+		} else if (!isInside || !Input.GetKey (KeyCode.E)) {
+		
+			dropletPS.Stop ();
 		}
 
 	}
