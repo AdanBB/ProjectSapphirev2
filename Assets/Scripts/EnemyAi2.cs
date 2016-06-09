@@ -100,13 +100,12 @@ public class EnemyAi2 : MonoBehaviour {
 
 			countedDamaged += Time.deltaTime;
 
-			Debug.Log ("dsa");
 
 		}
 		if(countedDamaged >= timeDamaged){
 
 			rend.materials[1].color = NornalTexture;
-			Debug.Log("lel");
+
 			countedDamaged = 0;
 			damaged = false;
 		}
