@@ -25,7 +25,7 @@ public class FontBehavior : MonoBehaviour {
         _player = GameObject.Find("PlayerAim").GetComponent<PlayerAI>();
 		_colorManager = GameObject.Find("ColorManager").GetComponent<ColorController>();
 		_uiColor = GameObject.Find ("Splash").GetComponent<CopsuleTint> ();
-		_uiColor2 = GameObject.Find ("Fill").GetComponent<CopsuleTint> ();
+		_uiColor2 = GameObject.FindGameObjectWithTag("Fill").GetComponent<CopsuleTint> ();
 		dropletPS = transform.GetChild (6).GetComponent<ParticleSystem> ();
 
 		_splash = GameObject.Find ("Splash").GetComponent<Image> ();
