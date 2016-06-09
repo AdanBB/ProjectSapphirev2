@@ -48,41 +48,60 @@ public class BulletDestroy : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-		if ((other.tag != "Detection") || (other.gameObject.tag != "Info") || (other.gameObject.tag == "Platform")) 
-		{
-			if (other.tag == "Boss2") {
-				other.GetComponent<EnemyAiBos2> ().AdDamage (damage);
-				Invoke ("Destroy", 0.05f);
-			}
-			if (other.tag == "Boss") {
-				other.GetComponent<EnemyAiBoos> ().AdDamage (damage);
-				Invoke ("Destroy", 0.05f);
-			} else if (other.tag == "Enemy") {
-				other.GetComponent<EnemyAi2> ().AdDamage (damage, _thisColor);
-				Invoke ("Destroy", 0.05f);
-			} else if (other.tag == "EnemySkull") {
-				other.GetComponent<EnemyAI3> ().AdDamage (damage, 0);
-				Invoke ("Destroy", 0.05f);
-			} else if (other.tag == "Floor") {
+        if(other.tag != "Info" || other.tag != "Detection")
+        {
+            if (other.tag == "Boss2")
+            {
+                other.GetComponent<EnemyAiBos2>().AdDamage(damage);
+                Invoke("Destroy", 0.05f);
+            }
+            else if (other.gameObject.tag == "Platform")
+            {
+                Invoke("Destroy", 0.05f);
+            }
+            else if (other.tag == "Boss")
+            {
+                other.GetComponent<EnemyAiBoos>().AdDamage(damage);
+                Invoke("Destroy", 0.05f);
+            }
+            else if (other.tag == "Enemy")
+            {
+                other.GetComponent<EnemyAi2>().AdDamage(damage, _thisColor);
+                Invoke("Destroy", 0.05f);
+            }
+            else if (other.tag == "EnemySkull")
+            {
+                other.GetComponent<EnemyAI3>().AdDamage(damage, 0);
+                Invoke("Destroy", 0.05f);
+            }
+            else if (other.tag == "Floor")
+            {
 
-				for (int i = 0; i < colorController.colorList.Count; i++) 
-				{
-					if (_thisColor == colorController.colorList [i].color) {
+                for (int i = 0; i < colorController.colorList.Count; i++)
+                {
+                    if (_thisColor == colorController.colorList[i].color)
+                    {
 
                         if (colorController.colorList[i].colorName == "Green")
                         {
                             Instantiate(GameObject.Find("paintSplash_Green"), positioninsta, rotateinsta);
+                            Invoke("Destroy", 0.05f);
+                            break;
                         }
                         else if (colorController.colorList[i].colorName == "Blue")
                         {
                             Instantiate(GameObject.Find("paintSplash_Blue"), positioninsta, rotateinsta);
+                            Invoke("Destroy", 0.05f);
+                            break;
                         }
                     }
-				}
-
-				Invoke ("Destroy", 0.05f);
-			}
-		}
+                }
+            }
+        }
+        else
+        {
+            Invoke("Destroy", 0.05f);
+        }
     }
 
 	void Destroy ()
