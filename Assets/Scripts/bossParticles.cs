@@ -77,18 +77,18 @@ public class bossParticles : MonoBehaviour {
                 }
             }
         }
-		if (counter > limit && (other.tag == "Enemy")) {
+		/*if (counter > limit && (other.tag == "Enemy")) {
 
-			other.GetComponent<EnemyAi2> ().AdDamage (damage, 0 );
+			other.GetComponent<EnemyAi2> ().AdDamage (damage, Color.red );
 
 
 		}
 		if (counter > limit && (other.tag == "EnemySkull")) {
 
-			other.GetComponent<EnemyAI3> ().AdDamage (damage, 0 );
+			other.GetComponent<EnemyAI3> ().AdDamage (damage, Color.red );
 
 
-		}
+		}*/
     }
 
     public void ParticleColor(int color)

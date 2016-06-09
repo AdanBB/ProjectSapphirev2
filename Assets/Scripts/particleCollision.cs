@@ -77,7 +77,7 @@ public class particleCollision : MonoBehaviour {
         }
 		if (counter > limit && (other.tag == "Enemy")) {
 
-			other.GetComponent<EnemyAi2> ().AdDamage (damage, 0 );
+			//other.GetComponent<EnemyAi2> ().AdDamage (damage, 0 );
 
 
 		}

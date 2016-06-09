@@ -93,6 +93,9 @@ public class EnemyAi2 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+
+
+
 		if (damaged) {
 
 			countedDamaged += Time.deltaTime;
@@ -205,20 +208,20 @@ public class EnemyAi2 : MonoBehaviour {
 
 	#region SelfDamage
 
-	public void AdDamage(int Damage, int color){
+	public void AdDamage(int Damage, Color color){
 
 		hit = true;
 
 		if ((health >= 0)) {
 
 			health = health - Damage;
-			rend.materials[1].SetColor("_Color", Color.red);
+			rend.materials[1].SetColor("_Color",color);
 
 			damaged = true;
 		}
 
 		if ((health <= 10) && (!lastHit)) {
-			rend.materials[1].SetColor("_Color", Color.red);
+			rend.materials[1].SetColor("_Color", color);
 
 			damaged = true;
 			lastHit = !lastHit;

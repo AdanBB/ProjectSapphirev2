@@ -58,7 +58,7 @@ public class BulletDestroy : MonoBehaviour {
 				other.GetComponent<EnemyAiBoos> ().AdDamage (damage);
 				Invoke ("Destroy", 0.05f);
 			} else if (other.tag == "Enemy") {
-				other.GetComponent<EnemyAi2> ().AdDamage (damage, 0);
+				other.GetComponent<EnemyAi2> ().AdDamage (damage, _thisColor);
 				Invoke ("Destroy", 0.05f);
 			} else if (other.tag == "EnemySkull") {
 				other.GetComponent<EnemyAI3> ().AdDamage (damage, 0);
