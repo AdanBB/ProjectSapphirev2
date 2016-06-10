@@ -52,7 +52,7 @@ public class blockCrackBoos : MonoBehaviour {
 	}
 
 	public void PreDown(){
-		//Instantiate (explosionParticles,transform.position,transform.rotation);
+		Instantiate (explosionParticles,transform.position,transform.rotation);
 		Invoke ("Down",0.7f);
 
 	}
