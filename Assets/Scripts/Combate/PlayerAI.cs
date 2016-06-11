@@ -26,9 +26,9 @@ public class PlayerAI : MonoBehaviour
 	private Vector3 _pivotTransform;
 	private Vector3 _pivotTransformBoos;
 
-	private int currentFrame;
-	private int _currentFrame;
-	private int framesDuration;
+	private float currentFrame;
+	private float _currentFrame;
+	private float framesDuration;
 
 	public ColorManager colorManager;
 	public AudioSource playerAudio;
@@ -63,7 +63,7 @@ public class PlayerAI : MonoBehaviour
 
 		currentFrame = 0;
 		_currentFrame = 15;
-		framesDuration = 15;
+		framesDuration = 0.25f;
     }
     // Update is called once per frame
     void Update()
@@ -119,7 +119,7 @@ public class PlayerAI : MonoBehaviour
 				Pivot.transform.localPosition = new Vector3(Easing.QuartEaseIn(currentFrame, pivotTransform.x, (_pivotTransform.x - pivotTransform.x), framesDuration),
 					Easing.QuartEaseIn(currentFrame, pivotTransform.y, (_pivotTransform.y - pivotTransform.y), framesDuration),
 					Easing.QuartEaseIn(currentFrame, pivotTransform.z, (_pivotTransform.z - pivotTransform.z), framesDuration));        
-				currentFrame++;
+				currentFrame+= Time.deltaTime;
 
 			}
 		}
@@ -131,7 +131,7 @@ public class PlayerAI : MonoBehaviour
 				Pivot.transform.localPosition = new Vector3(Easing.QuartEaseOut(_currentFrame, _pivotTransform.x, (pivotTransform.x - _pivotTransform.x), framesDuration),
 					Easing.QuartEaseOut(_currentFrame, _pivotTransform.y, (pivotTransform.y - _pivotTransform.y), framesDuration),
 					Easing.QuartEaseOut(_currentFrame, _pivotTransform.z, (pivotTransform.z - _pivotTransform.z), framesDuration));        
-				_currentFrame++;
+				_currentFrame+= Time.deltaTime;
 
 			}
 		}
