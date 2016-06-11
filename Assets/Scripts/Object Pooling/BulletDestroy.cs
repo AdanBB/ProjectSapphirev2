@@ -67,6 +67,7 @@ public class BulletDestroy : MonoBehaviour {
             else if (other.tag == "Enemy")
             {
                 other.GetComponent<EnemyAi2>().AdDamage(damage, _thisColor);
+				Instantiate (bulletExplosion, transform.position, transform.rotation);
                 Invoke("Destroy", 0.05f);
             }
             else if (other.tag == "EnemySkull")
