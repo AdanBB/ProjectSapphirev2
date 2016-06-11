@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyDetectionSkull : MonoBehaviour {
 
-	public EnemyAI3 enemyAi3;
+	public EnemyAI4 enemyAi4;
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -15,7 +15,7 @@ public class EnemyDetectionSkull : MonoBehaviour {
 	void OnTriggerStay(Collider other)
 	{
 		if (other.tag == "Player") {
-			enemyAi3.FollowPlayer ();
+			enemyAi4.FollowPlayer ();
 			Debug.Log ("dsad");
 		}
 

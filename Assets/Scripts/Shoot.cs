@@ -10,6 +10,9 @@ public class Shoot : MonoBehaviour {
 
 	public float shootRatio;
 
+
+	public laserScript laserscript;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -19,13 +22,13 @@ public class Shoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-		counter += Time.deltaTime;
-		if (counter >= shootRatio) {
-			Instantiate (shoot, transform.position, transform.rotation);
-			counter = 0;
+		if (!laserscript.spawning) {
+			counter += Time.deltaTime;
+			if (counter >= shootRatio) {
+				Instantiate (shoot, transform.position, transform.rotation);
+				counter = 0;
+			}
 		}
-
 
 	}
 }

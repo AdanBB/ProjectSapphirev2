@@ -17,6 +17,9 @@ public class laserScript : MonoBehaviour {
 	public Shoot shoot;
 	private float delay;
 
+	public bool spawning;
+
+
 
 	public ParticleSystemRay systemRay;
 
@@ -27,35 +30,32 @@ public class laserScript : MonoBehaviour {
 		ratioShoot = shoot.shootRatio;
 		trail.position = startPoint.position;
 		delay = 0.5f;
+		spawning = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		laserLine.SetPosition (0, startPoint.position);
 
-		counter += Time.deltaTime;
-
-		if (counter >= (ratioShoot - delay) && Vector3.Distance (startPoint.position, trail.position) <= 20) {
+		if (!spawning) {
 			
-			trail.Translate (0, 0, 1000* Time.deltaTime);
-			systemRay.setActive ();
-		}
-		if (counter >= ratioShoot) {
+			laserLine.SetPosition (0, startPoint.position);
 
-			trail.position = startPoint.position;
-			counter = 0;
-			systemRay.setDesactive ();
+			counter += Time.deltaTime;
+
+			if (counter >= (ratioShoot - delay) && Vector3.Distance (startPoint.position, trail.position) <= 20) {
+			
+				trail.Translate (0, 0, 1000 * Time.deltaTime);
+				systemRay.setActive ();
+			}
+			if (counter >= ratioShoot) {
+
+				trail.position = startPoint.position;
+				counter = 0;
+				systemRay.setDesactive ();
 		
-		}
+			}
 			
-		laserLine.SetPosition (1, trail.position);
-
-
-
-
-
-
-
-
+			laserLine.SetPosition (1, trail.position);
+		}
 	}
 }
