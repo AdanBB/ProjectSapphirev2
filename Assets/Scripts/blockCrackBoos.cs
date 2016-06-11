@@ -5,7 +5,6 @@ public class blockCrackBoos : MonoBehaviour {
 
 	public Animator anim;
 
-
 	private float counter;
 
 	public bool down = true;
@@ -16,23 +15,11 @@ public class blockCrackBoos : MonoBehaviour {
 
 	public Transform A;
 
-
-
-	void Awake(){
-
-
-
-
-	}
-
 	void FixedUpdate(){
 
 		if (down ) {
 
-
 			transform.Translate(0,0 ,-20f* Time.deltaTime) ;
-
-
 		}
 		if (transform.position.y <= -60f || up ) {
 			up = true;
@@ -47,8 +34,6 @@ public class blockCrackBoos : MonoBehaviour {
 			down = false;
 
 		}
-
-
 	}
 
 	public void PreDown(){
