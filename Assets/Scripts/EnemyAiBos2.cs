@@ -15,7 +15,7 @@ public class EnemyAiBos2 : MonoBehaviour {
 	public Color damagedTexture;
 	public Color NornalTexture;
 	public Renderer rend;
-
+	public Shoot shoot;
 
 	public Transform spawn1;
 	public Transform spawn2;
@@ -43,11 +43,6 @@ public class EnemyAiBos2 : MonoBehaviour {
 	void Update(){
 
 
-		if (active) {
-			enemy1.SetActive (true);
-			dead1 = false;
-			Invoke ("setDead",2f);
-		}
 
 
 		if (damaged) {
@@ -67,10 +62,10 @@ public class EnemyAiBos2 : MonoBehaviour {
 	}
 
 	public void AdDamage(int Damage){
-		if (active && dead1 && dead2) {
+		if (active) {
 
 
-			laserscript.spawning = false;
+
 			health -= Damage;
 	
 			rend.material.SetColor("_Color", Color.red);
@@ -107,15 +102,17 @@ public class EnemyAiBos2 : MonoBehaviour {
 
 		Debug.Log ("dsa");
 
-		laserscript.spawning = true;
-
+		//laserscript.spawning = false;
+		//Instantiate(enemy1, spawn1.position, spawn1.rotation);
+		//enemy1.SetActive (true);
+		enemy2.SetActive (true);
 
 		active = true;
 	
 	}
 	public void setDead(){
 	
-		enemy2.SetActive (true);
+		//enemy2.SetActive (true);
 	
 	}
 }

@@ -59,6 +59,7 @@ public class EnemyAiBoos : MonoBehaviour {
 		if (health <= 0) {
 			
 			particles.SetActive (true);
+			enemyAi2.SetLife ();
 			enemyAi2.active = true;
 			Destroy (this.gameObject);
 

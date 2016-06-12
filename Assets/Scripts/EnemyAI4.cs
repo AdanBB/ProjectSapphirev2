@@ -88,7 +88,7 @@ public class EnemyAI4 : MonoBehaviour {
 
             Instantiate(explosionParticles, transform.position, transform.localRotation);
 
-			Destroy (gameObject);
+			Destroy (this.gameObject);
 		
 		}
 

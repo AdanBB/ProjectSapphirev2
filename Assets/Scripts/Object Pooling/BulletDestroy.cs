@@ -52,6 +52,7 @@ public class BulletDestroy : MonoBehaviour {
         {
             if (other.tag == "Boss2")
             {
+				Instantiate (bulletExplosion, transform.position, transform.rotation);
                 other.GetComponent<EnemyAiBos2>().AdDamage(damage);
                 Invoke("Destroy", 0.05f);
             }
@@ -61,6 +62,7 @@ public class BulletDestroy : MonoBehaviour {
             }
             else if (other.tag == "Boss")
             {
+				Instantiate (bulletExplosion, transform.position, transform.rotation);
                 other.GetComponent<EnemyAiBoos>().AdDamage(damage);
                 Invoke("Destroy", 0.05f);
             }
@@ -72,9 +74,17 @@ public class BulletDestroy : MonoBehaviour {
             }
             else if (other.tag == "EnemySkull")
             {
+				Instantiate (bulletExplosion, transform.position, transform.rotation);
                 other.GetComponent<EnemyAI3>().AdDamage(damage, 0);
                 Invoke("Destroy", 0.05f);
             }
+			else if (other.tag == "EnemySkullBoos")
+			{
+				Instantiate (bulletExplosion, transform.position, transform.rotation);
+				other.GetComponent<EnemyAI4>().AdDamage(damage, 0);
+				Invoke("Destroy", 0.05f);
+			}
+
             else if (other.tag == "Floor")
             {
 
